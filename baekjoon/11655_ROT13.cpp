@@ -13,9 +13,6 @@ int main(){
     getline(cin, str);
 
     for(int i =0; i<str.size();i++){
-        if(str[i] == ' '){
-            cout << ' ';
-        }
         if(str[i] >= 'a' && str[i] <= 'z'){
             if(str[i]-'a'+13 >= 26){
                 cout << (char)(str[i] - 13);
@@ -25,7 +22,7 @@ int main(){
             }
         }
         else if(str[i] >= 'A' && str[i] <= 'Z'){
-            if(str[i]-'a'+13 >= 26){
+            if(str[i]-'A'+13 >= 26){
                 cout << (char)(str[i] - 13);
             }
             else{
