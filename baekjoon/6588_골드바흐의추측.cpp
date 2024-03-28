@@ -11,7 +11,6 @@ int main()
     cout.tie(NULL);
 
     vector<int> primeNumberCheck(MAX, 0);
-    vector<int> primeNumber;
 
     for (int i = 2; i * i <= MAX; i++)
     {
@@ -24,41 +23,29 @@ int main()
         }
     }
 
-    for (int i = 3; i <= MAX; i++)
-    {
-        if (primeNumberCheck[i] == 0)
-        {
-            primeNumber.push_back(i);
-        }
-    }
-
     int input = 1;
 
-    while (input)
+    while (true)
     {
         cin >> input;
-        int start = 0, end = input;
-        int check = 0;
-        while (start <= end)
-        {
+        if (input == 0)
+            break;
 
-            int sum = primeNumber[start] + primeNumber[end];
-            if (input == sum)
+        int check = 0;
+        for (int i = 3; i <= input; i += 2)
+        {
+            if (primeNumberCheck[i] == 0 && primeNumberCheck[input - i] == 0)
             {
-                cout << input << " = " << primeNumber[start] << " + " << primeNumber[end] << "\n";
+                cout << input << " = " << i << " + " << input - i << "\n";
                 check = 1;
                 break;
             }
-            else if (input < sum)
-            {
-                end--;
-            }
-            else
-            {
-                start++;
-            }
         }
-        cout << "Goldbach's conjecture is worng.";
+        if (!check)
+        {
+            cout << "Goldbach's conjecture is wrong."
+                 << "\n";
+        }
     }
 
     return 0;
